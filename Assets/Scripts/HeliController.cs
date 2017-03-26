@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class HeliController : MonoBehaviour
 { 
     public GameObject TargetObject;        
@@ -12,88 +13,109 @@ public class HeliController : MonoBehaviour
     public float HeliSpeed = 0.5f;
     public float HeliRotationSpeed = 1;
     public float TargetOffset = 1;
-    public float RefilSpeed = 0.01f;
-    public float CameraMinX = 200;
-    public float CameraMaxX = 650;
-    public float CameraMinZ = 300;
-    public float CameraMaxZ = 650;
-    public float CameraMoveSpeed = 10;
+    public float RefilSpeed = 0.02f;
+    public float CameraMinX = 100;
+    public float CameraMaxX = 1000;
+    public float CameraMinZ = 100;
+    public float CameraMaxZ = 1000;
+    public float CameraMoveSpeed = 5;
 
     private float _lastMousePositionX = 0;
     private float _lastMousePositionY = 0;
     private bool isHeliOnMove = false;
     private float waterAmount = 1;
     private bool isGoingToWater = false;
-    private Vector3 firstTouchPosition;
-    private Vector3 intermediateTouchPosition;
-    private Vector3 lastTouchPosition;  
+    private Vector2 firstTouchPosition;
+    private Vector2 intermediateTouchPosition;
+    private Vector2 lastTouchPosition;
+    private RaycastHit lastButtonDownPosition;
+    private bool isTouchMoving = false;
 
     void Update()
-    {                
+    {        
         RaycastHit hit;        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
-        //if (Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-        //{
-        //    if (Input.GetMouseButton(0))
-        //    {
-        //        transform.position -= new Vector3(Input.GetAxis("Mouse Y") * -1 * 200 * Time.deltaTime, 0,
-        //                           Input.GetAxis("Mouse X") * 200 * Time.deltaTime);
-        //    }
-            
-        //    if (Physics.Raycast(ray, out hit))
-        //    {
-        //        if (Input.GetMouseButtonUp(0))
-        //        {
-        //            TargetObject.transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);
-        //            isHeliOnMove = true;
-        //            if (hit.transform.tag == "Water")
-        //                isGoingToWater = true;
-        //            else
-        //                isGoingToWater = false;
-        //        }
-        //    }
-
-        //    if (Input.GetMouseButton(0))
-        //    {
-        //        var translation = new Vector3(Input.GetAxis("Mouse Y") * -1 * 400 * Time.deltaTime, 0,
-        //                           Input.GetAxis("Mouse X") * 400 * Time.deltaTime);
-        //        var newCameraPos = transform.position - translation;
-        //        if (newCameraPos.z < CameraMaxZ && newCameraPos.z > CameraMinZ && newCameraPos.x < CameraMaxX && newCameraPos.x > CameraMinX)
-        //            transform.position = newCameraPos;
-        //    }
-        //}
-
-        if (Input.touchCount == 1 && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
+#if UNITY_EDITOR         
+        if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) && !UnityEditor.EditorApplication.isRemoteConnected && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
+            if (Physics.Raycast(ray, out hit))
+            {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    lastButtonDownPosition = hit;
+                }
+                if (Input.GetMouseButtonUp(0))
+                {
+                    if (hit.Equals(lastButtonDownPosition))
+                    {
+                        TargetObject.transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);
+                        isHeliOnMove = true;
+                        if (hit.transform.tag == "Water")
+                            isGoingToWater = true;
+                        else
+                            isGoingToWater = false;
+                    }
+                }
+            }
+
+            if (Input.GetMouseButton(0))
+            {
+                var translation = new Vector3(Input.GetAxis("Mouse Y") * 400 * Time.deltaTime, 0,
+                                   Input.GetAxis("Mouse X") * -1 * 400 * Time.deltaTime);
+                if (transform.position.x + translation.x > CameraMaxX || transform.position.x + translation.x < CameraMinX)
+                    translation.x = 0;
+                if (transform.position.z + translation.z > CameraMaxZ || transform.position.z + translation.z < CameraMinZ)
+                    translation.z = 0;
+                transform.position += translation;
+            }
+        }
+#endif
+        
+        if (Input.touchCount == 2 && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null)
+        {
+            isTouchMoving = false;
+        }
+        if (Input.touchCount == 1 && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null)
+        {            
+            Debug.Log("touch");
             Touch touch = Input.GetTouch(0);
             if (touch.phase == TouchPhase.Began)
-            {
+            {                
+                isTouchMoving = true;
                 firstTouchPosition = touch.position;
                 intermediateTouchPosition = touch.position;
                 lastTouchPosition = touch.position;
             }
-            else if (touch.phase == TouchPhase.Moved)
+            else if (touch.phase == TouchPhase.Moved && isTouchMoving)
             {                
                 lastTouchPosition = touch.position;
                 var vector = (lastTouchPosition - intermediateTouchPosition) * CameraMoveSpeed;
-                var newCameraPos = transform.position + new Vector3(vector.y * Time.deltaTime, 0, -vector.x * Time.deltaTime);
-                if (newCameraPos.z < CameraMaxZ && newCameraPos.z > CameraMinZ && newCameraPos.x < CameraMaxX && newCameraPos.x > CameraMinX)
-                    transform.position = newCameraPos;
-                intermediateTouchPosition = touch.position;
+                vector.Scale(new Vector2(1.0f/Screen.width, 1.0f/Screen.height));                
+                var translation = new Vector3(vector.y * Time.deltaTime, 0, -vector.x * Time.deltaTime);
+                if (transform.position.x + translation.x > CameraMaxX || transform.position.x + translation.x < CameraMinX)
+                    translation.x = 0;
+                if (transform.position.z + translation.z > CameraMaxZ || transform.position.z + translation.z < CameraMinZ)
+                    translation.z = 0;
+                transform.position += translation;
+                intermediateTouchPosition = touch.position;               
             }
-            else if (touch.phase == TouchPhase.Ended)
-            {
+            else if (touch.phase == TouchPhase.Ended && isTouchMoving)
+            {                
+                isTouchMoving = false;
                 lastTouchPosition = touch.position;
-                if (Mathf.Abs(lastTouchPosition.x - firstTouchPosition.x) > Screen.height * 0.04 || Mathf.Abs(lastTouchPosition.y - firstTouchPosition.y) > Screen.height * 0.04)
+                if (Mathf.Abs(lastTouchPosition.x - firstTouchPosition.x) > Screen.height * 0.04 || Mathf.Abs(lastTouchPosition.y - firstTouchPosition.y) > Screen.height * 0.04)                
                 {
                     var vector = (lastTouchPosition - intermediateTouchPosition)* CameraMoveSpeed;
-                    var newCameraPos = transform.position + new Vector3(vector.y * Time.deltaTime, 0, -vector.x * Time.deltaTime);
-                    if (newCameraPos.z < CameraMaxZ && newCameraPos.z > CameraMinZ && newCameraPos.x < CameraMaxX && newCameraPos.x > CameraMinX)
-                        transform.position = newCameraPos;
+                    vector.Scale(new Vector2(1.0f/Screen.width, 1.0f/Screen.height));                    
+                    var translation = new Vector3(vector.y * Time.deltaTime, 0, -vector.x * Time.deltaTime);
+                    if (transform.position.x + translation.x > CameraMaxX || transform.position.x + translation.x < CameraMinX)
+                        translation.x = 0;
+                    if (transform.position.z + translation.z > CameraMaxZ || transform.position.z + translation.z < CameraMinZ)
+                        translation.z = 0;
+                    transform.position += translation;
                 }
                 else
-                {
+                {                    
                     if (Physics.Raycast(ray, out hit))
                     {
                         TargetObject.transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);
@@ -125,10 +147,10 @@ public class HeliController : MonoBehaviour
             {
                 var water = Instantiate(Water);
                 water.transform.position = HeliTransform.position;
-                var waterController = water.GetComponent<WaterController>();
-                Debug.Log(TerrainObject);
+                var waterController = water.GetComponent<WaterController>();                
                 waterController.TerrainObject = TerrainObject;
                 waterAmount -= 0.25f;
+                GetComponents<AudioSource>()[2].Play();
             }                      
             HealthBar.transform.localScale = new Vector3(waterAmount, 1,1);
         }

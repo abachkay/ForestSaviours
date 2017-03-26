@@ -19,9 +19,8 @@ public class TerrainInit : MonoBehaviour
         TerrainData newTerrainData = Instantiate(terrain.terrainData);
         terrain.terrainData = newTerrainData;        
         var heliController = GetComponent<HeliController>();
-        heliController.TerrainObject = terrainGameObject;
-        Debug.Log(terrain.GetComponent<FiringOld>());
-        var firingController = terrain.GetComponent<FiringOld>();
+        heliController.TerrainObject = terrainGameObject;        
+        var firingController = terrain.GetComponent<FiringOld>();        
         firingController.PercentageText = PercentageText;
         firingController.GameOverMenu = GameOverMenu;
         firingController.GameOverText = GameOverText;

@@ -14,6 +14,7 @@ public class FiringOld : MonoBehaviour
     public double fireTtlRandomizeRange = 3;
     public double WaterRadius = 10;
     public int deadTreeIndex = 0;
+    public int[] InitialFireTreeIndexes = { 0,1 };
     public UnityEngine.UI.Text PercentageText;
     public Canvas GameOverMenu;
     public UnityEngine.UI.Text GameOverText;
@@ -35,7 +36,7 @@ public class FiringOld : MonoBehaviour
         }
     }        
 	void Start ()
-    {
+    {        
         currentTerrain = Terrain.activeTerrain;
         trees = currentTerrain.terrainData.treeInstances;        
         isOnFire = new bool[TreesCount];
@@ -59,14 +60,13 @@ public class FiringOld : MonoBehaviour
                     nearTreesIndexes[i].Add(j);
                 }
             }
-        }                 
-        MakeFlame(0);
-        foreach (var i in nearTreesIndexes[10])
+        }
+        foreach (var i1 in InitialFireTreeIndexes)
         {
-            MakeFlame(i);
-            foreach (var i2 in nearTreesIndexes[i])
+            MakeFlame(i1);
+            foreach (var i2 in nearTreesIndexes[i1])
             {
-                MakeFlame(i2);               
+                MakeFlame(i2);
             }
         }
     }
@@ -101,13 +101,16 @@ public class FiringOld : MonoBehaviour
         secondCounter2Destroy += Convert.ToDouble(Time.deltaTime);
         if (secondCounter2Destroy >= TreeDestroyPollingIntervalSec)
         {            
-            secondCounter2Destroy = 0;
+            secondCounter2Destroy = 0;            
             PercentageText.text = ((int)(100 * fireTtls.Count(x => x > 0) / TreesCount)).ToString() + "%";
             if (fires.Count(x => x != null) == 0)
-            {
-                Debug.Log("GameOver");
+            {                
                 GameOverMenu.enabled = true;
                 GameOverText.text = ((int)(100 * fireTtls.Count(x => x > 0) / TreesCount)).ToString() + "%";
+                foreach(var audio in Camera.main.GetComponents<AudioSource>())
+                {
+                    audio.Pause();
+                }
             }
             for (int i = 0; i < isOnFire.Length; i++)
             {                
@@ -123,9 +126,7 @@ public class FiringOld : MonoBehaviour
             }            
         }
         if (secondCounter2GetOnFire >= TreeGettingOnFireTimeSec)
-        {
-           
-            
+        {                       
             secondCounter2GetOnFire = 0;
             var treeToFireIndexesSet = new HashSet<int>();            
             for (int i = 0; i < isOnFire.Length; i++)

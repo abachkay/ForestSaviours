@@ -11,8 +11,7 @@ public class PinchZoom : MonoBehaviour
             if (zoomDelta != 0)
             {
                 var newCameraY = Mathf.Clamp(transform.position.y - zoomDelta * 2000 * Time.deltaTime, 200, 300);
-                transform.position = new Vector3(transform.position.x, newCameraY, transform.position.z);
-                Debug.Log(newCameraY);
+                transform.position = new Vector3(transform.position.x, newCameraY, transform.position.z);                
             }
         }        
         if (Input.touchCount == 2 && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())

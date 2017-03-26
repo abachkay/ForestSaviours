@@ -7,15 +7,9 @@ public class HeliRotors : MonoBehaviour {
     public Transform RearRotor;
     public float MainRotorSpeed;
     public float RearRotorSpeed;
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
 	void Update ()
     {
-        MainRotor.Rotate(0, 0, MainRotorSpeed);
-        RearRotor.Rotate(RearRotorSpeed,0,0);
+        MainRotor.Rotate(0, 0, MainRotorSpeed*60*Time.deltaTime);
+        RearRotor.Rotate(RearRotorSpeed* 60 * Time.deltaTime, 0,0);
 	}
 }

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForestSaviours", "Assembly-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForestSaviours", "Assembly-CSharp-Editor-firstpass.csproj", "{037CB929-7F7E-DE8E-F4BC-021FFE624DA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForestSaviours", "Assembly-CSharp-Editor.csproj", "{808D556D-0265-8018-B1A9-DAACDD413014}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{037CB929-7F7E-DE8E-F4BC-021FFE624DA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{037CB929-7F7E-DE8E-F4BC-021FFE624DA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{037CB929-7F7E-DE8E-F4BC-021FFE624DA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{808D556D-0265-8018-B1A9-DAACDD413014}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{808D556D-0265-8018-B1A9-DAACDD413014}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{808D556D-0265-8018-B1A9-DAACDD413014}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{808D556D-0265-8018-B1A9-DAACDD413014}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
