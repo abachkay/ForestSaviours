@@ -55,5 +55,5 @@ public class UIEvents : MonoBehaviour
                 audio.Play();
             }
         }
-    }     
+    }    
 }

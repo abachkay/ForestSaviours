@@ -55,6 +55,9 @@
      <Compile Include="Assets\Scripts\FiringOld.cs" />
      <Compile Include="Assets\Scripts\HeliController.cs" />
      <Compile Include="Assets\Scripts\HeliRotors.cs" />
+     <Compile Include="Assets\Scripts\HeliSelectController.cs" />
+     <Compile Include="Assets\Scripts\HelicoptersController.cs" />
+     <Compile Include="Assets\Scripts\LevelPercentageController.cs" />
      <Compile Include="Assets\Scripts\PinchZoom.cs" />
      <Compile Include="Assets\Scripts\RTSController.cs" />
      <Compile Include="Assets\Scripts\TerrainInit.cs" />

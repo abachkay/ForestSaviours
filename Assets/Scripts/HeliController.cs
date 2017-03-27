@@ -4,21 +4,23 @@ using UnityEngine;
 
 
 public class HeliController : MonoBehaviour
-{ 
-    public GameObject TargetObject;        
-    public Transform HeliTransform;
+{              
     public GameObject Water;
-    public GameObject TerrainObject;
-    public GameObject HealthBar;
-    public float HeliSpeed = 0.5f;
-    public float HeliRotationSpeed = 1;
+    public GameObject TerrainObject;  
     public float TargetOffset = 1;
-    public float RefilSpeed = 0.02f;
     public float CameraMinX = 100;
     public float CameraMaxX = 1000;
     public float CameraMinZ = 100;
     public float CameraMaxZ = 1000;
-    public float CameraMoveSpeed = 5;
+    public float CameraMoveSpeed = 5000;
+
+    public float HeliSpeed = 0.5f;
+    public float HeliRotationSpeed = 1;
+    public float RefilSpeed = 0.02f;
+    public float AmountOfOneSpray = 0.25f;
+    public Transform HeliTransform;
+    public GameObject HealthBar;
+    public GameObject TargetObject;
 
     private float _lastMousePositionX = 0;
     private float _lastMousePositionY = 0;
@@ -35,6 +37,7 @@ public class HeliController : MonoBehaviour
     {        
         RaycastHit hit;        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        // Inout from windows.
 #if UNITY_EDITOR         
         if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) && !UnityEditor.EditorApplication.isRemoteConnected && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject())
         {
@@ -70,7 +73,7 @@ public class HeliController : MonoBehaviour
             }
         }
 #endif
-        
+        // Input from mobile.
         if (Input.touchCount == 2 && UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null)
         {
             isTouchMoving = false;
@@ -133,27 +136,29 @@ public class HeliController : MonoBehaviour
                 intermediateTouchPosition = lastTouchPosition;
             }
         }
-    
+        // Heli moves and rotates.
         if (isHeliOnMove)
         {
             HeliTransform.position = Vector3.MoveTowards(HeliTransform.position, new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z), HeliSpeed*Time.deltaTime*60);           
             var q = Quaternion.LookRotation(new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z) - HeliTransform.position);
             HeliTransform.rotation = Quaternion.RotateTowards(HeliTransform.rotation, q, HeliRotationSpeed*Time.deltaTime * 60);
         }
+        // Heli sprays water.
         if(isHeliOnMove&& Mathf.Abs(HeliTransform.position.x- TargetObject.transform.position.x)<0.1&& Mathf.Abs(HeliTransform.position.z- TargetObject.transform.position.z)<0.1)
         {
             isHeliOnMove = false;
-            if (!isGoingToWater && waterAmount >= 0.25f)
+            if (!isGoingToWater && waterAmount >= AmountOfOneSpray)
             {
                 var water = Instantiate(Water);
                 water.transform.position = HeliTransform.position;
                 var waterController = water.GetComponent<WaterController>();                
                 waterController.TerrainObject = TerrainObject;
-                waterAmount -= 0.25f;
+                waterAmount -= AmountOfOneSpray;
                 GetComponents<AudioSource>()[2].Play();
             }                      
             HealthBar.transform.localScale = new Vector3(waterAmount, 1,1);
         }
+        // Heli refils water.
         if(!isHeliOnMove && isGoingToWater && waterAmount<1)
         {
             waterAmount += RefilSpeed/10*60*Time.deltaTime;

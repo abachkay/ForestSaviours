@@ -18,6 +18,7 @@ public class FiringOld : MonoBehaviour
     public UnityEngine.UI.Text PercentageText;
     public Canvas GameOverMenu;
     public UnityEngine.UI.Text GameOverText;
+    public int levelIndex=0;
 
     private double secondCounter2Destroy = 0;
     private double secondCounter2GetOnFire = 0;
@@ -104,9 +105,14 @@ public class FiringOld : MonoBehaviour
             secondCounter2Destroy = 0;            
             PercentageText.text = ((int)(100 * fireTtls.Count(x => x > 0) / TreesCount)).ToString() + "%";
             if (fires.Count(x => x != null) == 0)
-            {                
+            {
+                int percentage = ((int)(100 * fireTtls.Count(x => x > 0) / TreesCount));
+                if (PlayerPrefs.GetInt(levelIndex.ToString() + "%") < percentage)
+                {
+                    PlayerPrefs.SetInt(levelIndex.ToString() + "%", percentage);
+                }
                 GameOverMenu.enabled = true;
-                GameOverText.text = ((int)(100 * fireTtls.Count(x => x > 0) / TreesCount)).ToString() + "%";
+                GameOverText.text = percentage.ToString() + "%";
                 foreach(var audio in Camera.main.GetComponents<AudioSource>())
                 {
                     audio.Pause();
