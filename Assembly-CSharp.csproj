@@ -64,11 +64,6 @@
      <Compile Include="Assets\Scripts\UIEvents.cs" />
      <Compile Include="Assets\Scripts\VolumeController.cs" />
      <Compile Include="Assets\Scripts\WaterController.cs" />
-     <Compile Include="Assets\itsHarshdeep\LoadingBetweenScenes\Scripts\Constants.cs" />
-     <Compile Include="Assets\itsHarshdeep\LoadingBetweenScenes\Scripts\LoadRequestedScene.cs" />
-     <Compile Include="Assets\itsHarshdeep\LoadingBetweenScenes\Scripts\LoadingSceneController.cs" />
-     <Compile Include="Assets\itsHarshdeep\LoadingBetweenScenes\Scripts\LoadingSceneDemo.cs" />
-     <Compile Include="Assets\itsHarshdeep\LoadingBetweenScenes\Scripts\SceneController.cs" />
      <None Include="Assets\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendOneOne.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
@@ -102,6 +97,7 @@
      <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-BumpSpec.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
+     <None Include="Assets\Trees\Mobile Trees\README.txt" />
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-Diffuse.shader" />

@@ -214,6 +214,7 @@
      <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-BumpSpec.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\FisheyeShader.shader" />
+     <None Include="Assets\Trees\Mobile Trees\README.txt" />
      <None Include="Assets\Standard Assets\Vehicles\Car\Shaders\DiffuseReflectiveShader.shader" />
      <None Include="Assets\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Apply.shader" />
      <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-Diffuse.shader" />
