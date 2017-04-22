@@ -46,7 +46,7 @@ public class FiringOld : MonoBehaviour
         fireTtls = new double[TreesCount];
         nearTreesIndexes = new List<int>[TreesCount];
         var rand = new System.Random();
-        Debug.Log($"Tree count: {TreesCount}");
+        Debug.Log("Tree count: "+TreesCount);
         for(int i=0;i<TreesCount;i++)
         {
             fireTtls[i] = fireTtl+rand.Next(0,(int)(fireTtlRandomizeRange*10))/10.0;
