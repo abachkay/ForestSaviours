@@ -139,9 +139,12 @@ public class HeliController : MonoBehaviour
         // Heli moves and rotates.
         if (isHeliOnMove)
         {
-            HeliTransform.position = Vector3.MoveTowards(HeliTransform.position, new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z), HeliSpeed*Time.deltaTime*60);           
-            var q = Quaternion.LookRotation(new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z) - HeliTransform.position);
-            HeliTransform.rotation = Quaternion.RotateTowards(HeliTransform.rotation, q, HeliRotationSpeed*Time.deltaTime * 60);
+            HeliTransform.position = Vector3.MoveTowards(HeliTransform.position, new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z), HeliSpeed*Time.deltaTime*60);
+            if (new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z) != HeliTransform.position)
+            {
+                var q = Quaternion.LookRotation(new Vector3(TargetObject.transform.position.x, HeliTransform.position.y, TargetObject.transform.position.z) - HeliTransform.position);
+                HeliTransform.rotation = Quaternion.RotateTowards(HeliTransform.rotation, q, HeliRotationSpeed * Time.deltaTime * 60);
+            }                        
         }
         // Heli sprays water.
         if(isHeliOnMove&& Mathf.Abs(HeliTransform.position.x- TargetObject.transform.position.x)<0.1&& Mathf.Abs(HeliTransform.position.z- TargetObject.transform.position.z)<0.1)
