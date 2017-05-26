@@ -178,7 +178,7 @@ public class HelicoptersController : MonoBehaviour
                     var water = Instantiate(Water);
                     water.transform.position = HelicoptersTransforms[index].position;
                     var waterController = water.GetComponent<WaterController>();
-                    waterController.TerrainObject = TerrainObject;
+                    
                     helicoptersWaterAmounts[index] -= HelicoptersAmountsOfOneSpray[index];
                     GetComponents<AudioSource>()[2].Play();
                 }

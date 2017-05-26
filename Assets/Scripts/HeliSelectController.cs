@@ -5,6 +5,10 @@ using UnityEngine;
 public class HeliSelectController : MonoBehaviour
 {
     public UnityEngine.UI.Button[] HeliSelectButtons;
+    public void Start()
+    {
+        SelectHeli(0);
+    }
     public void SelectHeli(int index)
     {           
         foreach (var b in HeliSelectButtons)
@@ -24,7 +28,5 @@ public class HeliSelectController : MonoBehaviour
         normalColor.b = 255;
         colors.normalColor = normalColor;
         HeliSelectButtons[index].colors = colors;
-        var helicoptersController = GetComponent<HelicoptersController>();
-        helicoptersController.SelectedHelicoterIndex = index;
     }
 }
