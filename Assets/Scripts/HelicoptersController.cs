@@ -25,9 +25,6 @@ public class HelicoptersController : MonoBehaviour
     private bool[] areHelicoptersGoingToWater;
     private float[] helicoptersWaterAmounts;
     
-
-    private float _lastMousePositionX = 0;
-    private float _lastMousePositionY = 0;   
     private Vector2 firstTouchPosition;
     private Vector2 intermediateTouchPosition;
     private Vector2 lastTouchPosition;

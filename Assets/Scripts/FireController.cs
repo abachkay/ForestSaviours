@@ -192,7 +192,7 @@ public class FireController : MonoBehaviour
             var speed =  WindSpeed + Random.Range(-WindSpeedAmplitude, WindSpeedAmplitude);
             if (WindArrow != null && WindSpeedText != null)
             {
-                WindSpeedText.text = string.Format("{0:0.0}m/s", speed);
+                WindSpeedText.text = string.Format("{0:0.0} м/с", speed);
                 WindArrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
             }
         }       

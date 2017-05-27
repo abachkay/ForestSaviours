@@ -7,7 +7,10 @@ public class HeliSelectController : MonoBehaviour
     public UnityEngine.UI.Button[] HeliSelectButtons;
     public void Start()
     {
-        SelectHeli(0);
+        if (HeliSelectButtons.Length > 0)
+        {
+            SelectHeli(0);
+        }
     }
     public void SelectHeli(int index)
     {           

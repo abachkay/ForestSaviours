@@ -5,9 +5,10 @@ using System.Linq;
 
 public class FireFightersManagementController : MonoBehaviour
 {
+    public float TargetOffset = 1;
     public int SelectedHelicoterIndex = 0;
     public FireFighterController[] Helicopters;
-    public float TargetOffset = 1;
+    public NoResourceTextController NoResourceTextController;
 
     private Vector2 firstTouchPosition;    
     private bool isTouchMoving = false;
@@ -71,15 +72,24 @@ public class FireFightersManagementController : MonoBehaviour
             Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Remove(hit.transform.gameObject);
             Destroy(hit.transform.gameObject);
         }
-        else
+        else if (hit.transform.tag == "Water" && Helicopters[SelectedHelicoterIndex].Type == FireFighterType.AerialWaterSpraying)
+        {
+            if (Helicopters[SelectedHelicoterIndex].RefillingTarget != null)
+            {
+                Destroy(Helicopters[SelectedHelicoterIndex].RefillingTarget);
+                Helicopters[SelectedHelicoterIndex].RefillingTarget = null;
+            }
+            Helicopters[SelectedHelicoterIndex].RefillingTarget = Instantiate(Helicopters[SelectedHelicoterIndex].TargetForRefillPrefab);
+            Helicopters[SelectedHelicoterIndex].RefillingTarget.transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);
+        }
+        else if (Helicopters[SelectedHelicoterIndex].CanDrop)
         {
             Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Add(Instantiate(Helicopters[SelectedHelicoterIndex].TargetOfMovementPrefab));
-            Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last().transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);
-            Helicopters[SelectedHelicoterIndex].IsOnMove = true;
-            if (hit.transform.tag == "Water" && Helicopters[SelectedHelicoterIndex].Type == FireFighterType.AerialWaterSpraying)
-            {
-                Helicopters[SelectedHelicoterIndex].WaterPointingTargetOfMovement = Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last();
-            }       
+            Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last().transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);                       
+        }
+        else if (NoResourceTextController != null)
+        {
+            NoResourceTextController.Show();
         }
     }
     public void SelectFireFighter(int index)
@@ -89,8 +99,7 @@ public class FireFightersManagementController : MonoBehaviour
     public void SendToBase()
     {
         Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Add(Instantiate(Helicopters[SelectedHelicoterIndex].TargetOfMovementPrefab));
-        Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last().transform.position = new Vector3(-20, 0, -20);
-        Helicopters[SelectedHelicoterIndex].IsOnMove = true;
-        Helicopters[SelectedHelicoterIndex].WaterPointingTargetOfMovement = Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last();
+        Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last().transform.position = new Vector3(-20, 0, -20);        
+        //Helicopters[SelectedHelicoterIndex].WaterPointingTargetOfMovement = Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last();
     }
 }

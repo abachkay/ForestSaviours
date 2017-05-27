@@ -10,33 +10,40 @@ public class FireFighterController : MonoBehaviour
     public float RefilSpeed = 0.1f;
     public float AmountsOfOneSpray = 0.24999f;
     public FireFighterType Type = FireFighterType.AerialWaterSpraying;
-   
+
     public Transform HealthBarTransform;
     public List<GameObject> TargetsOfMovementList;
-    public GameObject WaterPointingTargetOfMovement = null;
-    public GameObject TargetOfMovementPrefab;    
+    public GameObject RefillingTarget;    
+    public GameObject TargetOfMovementPrefab;
     public GameObject WaterSpray;
-
-    public bool IsOnMove = false;
-    public bool IsMovingToWater = false;
-    private bool IsRefilling = false;
+    public GameObject TargetForRefillPrefab;
+            
     private float _waterAmount = 1;
     private FireFighterState _state = FireFighterState.Idle;
+    private bool _noDrop = false;
     private void Start()
     {
         TargetsOfMovementList = new List<GameObject>();
     }
-    private void Update ()
+    private void Update()
     {
-        if(_state == FireFighterState.Idle && TargetsOfMovementList.Count > 0)
+        if (_state == FireFighterState.Idle /*|| _state == FireFighterState.Refilling*/ && TargetsOfMovementList.Count > 0 || RefillingTarget != null)
         {
             _state = FireFighterState.Moving;
         }
-       
-        if (_state == FireFighterState.Moving && TargetsOfMovementList.Count > 0)
+
+        if (_state == FireFighterState.Moving && TargetsOfMovementList.Count > 0 || RefillingTarget != null)
         {
             // Helicopter moves and rotates.
-            var targetOfMovement = TargetsOfMovementList.First();
+            GameObject targetOfMovement = null;
+            if (TargetsOfMovementList.Count > 0)
+            {
+                targetOfMovement = TargetsOfMovementList.First();
+            }
+            else
+            {
+                targetOfMovement = RefillingTarget;
+            }
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetOfMovement.transform.position.x,
                 transform.position.y, targetOfMovement.transform.position.z), MovementSpeed * Time.deltaTime);
             if (new Vector3(targetOfMovement.transform.position.x, transform.position.y,
@@ -48,11 +55,11 @@ public class FireFighterController : MonoBehaviour
             }
             if (Mathf.Abs(transform.position.x - targetOfMovement.transform.position.x) < 0.1 && Mathf.Abs(transform.position.z - targetOfMovement.transform.position.z) < 0.1)
             {
-                if(targetOfMovement == WaterPointingTargetOfMovement)
+                if (RefillingTarget != null)
                 {
                     _state = FireFighterState.Refilling;
                 }
-                else if (_waterAmount >= AmountsOfOneSpray)
+                if (_waterAmount >= AmountsOfOneSpray && TargetsOfMovementList.Count > 0 && _noDrop == false)
                 {
                     // Spray water
                     var water = Instantiate(WaterSpray);
@@ -75,112 +82,55 @@ public class FireFighterController : MonoBehaviour
                         HealthBarTransform.localScale = new Vector3(_waterAmount, 1, 1);
                     }
                     _state = FireFighterState.Idle;
+                    // Send to base
+                    if (Type != FireFighterType.AerialWaterSpraying && _waterAmount < AmountsOfOneSpray)
+                    {                                                
+                        RefillingTarget = Instantiate(TargetOfMovementPrefab);
+                        RefillingTarget.transform.position = new Vector3(-15,0,-15);
+                        RefillingTarget.SetActive(false);
+                    }
+
                 }
-                else
+                else if (RefillingTarget == null)
                 {
                     _state = FireFighterState.Idle;
                 }
 
                 // Destroy target sprite.
                 Destroy(targetOfMovement);
-                TargetsOfMovementList.RemoveAt(0);                
+                if (TargetsOfMovementList.Any())
+                {                    
+                    TargetsOfMovementList.RemoveAt(0);
+                }
+                else
+                {
+                    RefillingTarget = null;
+                }
             }
         }
 
         if (_state == FireFighterState.Refilling)
-        {    
+        {
             // Refils water           
             if (_waterAmount + RefilSpeed * 60 * Time.deltaTime >= 1)
             {
                 _waterAmount = 1;
                 _state = FireFighterState.Idle;
-            }            
+            }
             _waterAmount += RefilSpeed * 60 * Time.deltaTime;
             if (HealthBarTransform != null)
             {
                 HealthBarTransform.localScale = new Vector3(_waterAmount, 1, 1);
-            }            
+            }
         }
+    }
 
-        // Next target is being selected.
-        //GameObject targetOfMovement = null;
-        //if (TargetsOfMovementList.Count != 0)
-        //{
-        //    targetOfMovement = TargetsOfMovementList.First();
-        //    IsOnMove = true;
-        //    if(targetOfMovement == WaterPointingTargetOfMovement)
-        //    {
-        //        IsMovingToWater = true;
-        //    }
-        //    else
-        //    {
-        //        IsMovingToWater = false;
-        //    }
-        //}
-        //else
-        //{
-        //    IsOnMove = false;
-        //}             
-
-        // Helicopter moves and rotates.
-        //if (IsOnMove)
-        //{
-        //    transform.position = Vector3.MoveTowards(transform.position, new Vector3(targetOfMovement.transform.position.x, 
-        //        transform.position.y, targetOfMovement.transform.position.z), MovementSpeed * Time.deltaTime);
-        //    if (new Vector3(targetOfMovement.transform.position.x, transform.position.y,
-        //        targetOfMovement.transform.position.z) != transform.position)
-        //    {
-        //        var q = Quaternion.LookRotation(new Vector3(targetOfMovement.transform.position.x, transform.position.y,
-        //                targetOfMovement.transform.position.z) - transform.position);
-        //        transform.rotation = Quaternion.RotateTowards(transform.rotation, q, RotationSpeed * Time.deltaTime);
-        //    }
-        //}
-
-        // Helicopter sprays water.
-        //if (IsOnMove && Mathf.Abs(transform.position.x - targetOfMovement.transform.position.x) < 0.1 && Mathf.Abs(transform.position.z - targetOfMovement.transform.position.z) < 0.1)
-        //{
-        //    IsOnMove = false;
-        //    if (!IsMovingToWater && _waterAmount >= AmountsOfOneSpray)
-        //    {
-        //        var water = Instantiate(WaterSpray);
-        //        if (Type == FireFighterType.AerialChemicalBombing)
-        //        {
-        //            water.transform.position = targetOfMovement.transform.position;
-        //        }
-        //        else
-        //        {
-        //            water.transform.position = transform.position;
-        //        }
-        //        var waterController = water.GetComponent<WaterController>();
-        //        _waterAmount -= AmountsOfOneSpray;
-        //        //GetComponents<AudioSource>()[2].Play();
-        //    }
-        //    if (HealthBarTransform != null)
-        //    {
-        //        HealthBarTransform.localScale = new Vector3(_waterAmount, 1, 1);
-        //    }
-        //}
-
-        // Helicopter refils water.
-        //if (!IsOnMove && IsMovingToWater && _waterAmount < 1)
-        //{
-        //    _waterAmount += RefilSpeed * 60 * Time.deltaTime;
-        //    if (HealthBarTransform != null)
-        //    {
-        //        HealthBarTransform.localScale = new Vector3(_waterAmount, 1, 1);
-        //    }
-        //}
-
-        // Destroy target sprite
-        //if (!IsOnMove && targetOfMovement != null)
-        //{
-        //    Destroy(targetOfMovement);
-        //    TargetsOfMovementList.RemoveAt(0);
-        //    if (TargetsOfMovementList.Count != 0)
-        //    {
-        //        IsOnMove = true;
-        //    }
-        //}
+    public bool CanDrop
+    {
+        get
+        {
+            return (_waterAmount >= AmountsOfOneSpray * (TargetsOfMovementList.Count + 1));
+        }
     }
 }
 public enum FireFighterType : byte
