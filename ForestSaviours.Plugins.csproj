@@ -76,6 +76,9 @@
     <Reference Include="UnityEditor">
       <HintPath>Library\UnityAssemblies\UnityEditor.dll</HintPath>
     </Reference>
+    <Reference Include="EasyRoads3D">
+      <HintPath>Assets\EasyRoads3D Free\lib\EasyRoads3D.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Standard Assets\2D\Scripts\Camera2DFollow.cs" />
@@ -214,6 +217,21 @@
     <Compile Include="Assets\Standard Assets\Vehicles\Car\Scripts\WheelEffects.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\EasyRoads3D Free\Release Notes.txt" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D Marker.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-BumpSpec.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-Bumped.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Alpha-Diffuse.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Normal-BumpSpec.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Normal-Bumped.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Normal-Diffuse.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Road-Edit-Mode.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Surface.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\EasyRoads3D-Surface_Alpha.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\Surface.shader" />
+    <None Include="Assets\EasyRoads3D Free\Shaders\surfaceAlpha.shader" />
+    <None Include="Assets\EasyRoads3D Free\_Readme.txt" />
+    <None Include="Assets\EasyRoads3D Free\_readme 1.txt" />
     <None Include="Assets\SkyBox\ReadMe.txt" />
     <None Include="Assets\Standard Assets\Cameras\CameraGuidelines.txt" />
     <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

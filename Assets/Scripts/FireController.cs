@@ -34,7 +34,7 @@ public class FireController : MonoBehaviour
     private TreeState[] _treesStates; 
     private Dictionary<int, float>[] _nearTrees;
     private float _pollingTimeStep = 0.1f;
-    private float _fireDistance = 0.04f;
+    private float _fireDistance = 40f;
     private float _pollingCounter = 0;
     private float _waterRadius = 20;
     private GameObject[] _spots;
@@ -50,7 +50,7 @@ public class FireController : MonoBehaviour
         var newTerrainData = Instantiate(TerrainObject.GetComponent<Terrain>().terrainData);
         TerrainObject.GetComponent<Terrain>().terrainData = newTerrainData;
         _trees = TerrainObject.GetComponent<Terrain>().terrainData.treeInstances;
-        //Debug.Log(_trees.Length);
+        Debug.Log(_trees.Length);
         _fires = new GameObject[_trees.Length];
         _spots = new GameObject[_trees.Length];
         _treesHealth = new float[_trees.Length];
@@ -65,10 +65,10 @@ public class FireController : MonoBehaviour
             _treesStates[i] = TreeState.Ok;            
             for(int j=0;j<_trees.Length;j++)
             {
-                Vector2 position2d = new Vector2(_trees[i].position.z, _trees[i].position.x);
-                position2d.x += WindSpeed / 1000 * Mathf.Cos(WindAngle * Mathf.PI / 180);
-                position2d.y += WindSpeed / 1000 * Mathf.Sin(WindAngle * Mathf.PI / 180);
-                var distance = Vector3.Distance(new Vector3(position2d.y, _trees[i].position.y, position2d.x), _trees[j].position);
+                Vector2 position2d = new Vector2(_trees[i].position.z * TerrainObject.GetComponent<Terrain>().terrainData.size.z, _trees[i].position.x * TerrainObject.GetComponent<Terrain>().terrainData.size.x);
+                position2d.x += WindSpeed * Mathf.Cos(WindAngle * Mathf.PI / 180);
+                position2d.y += WindSpeed * Mathf.Sin(WindAngle * Mathf.PI / 180);
+                var distance = Vector3.Distance(new Vector3(position2d.y, _trees[i].position.y * TerrainObject.GetComponent<Terrain>().terrainData.size.y, position2d.x), Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size,_trees[j].position));
                 if (i != j && distance < _fireDistance)
                 {
                     if (_nearTrees[i] == null)
@@ -83,7 +83,7 @@ public class FireController : MonoBehaviour
         {
             for (int j = 0; j < _trees.Length; j++)
             {
-                if (Vector3.Distance(_trees[InitialFireTreeIndexes[i]].position, _trees[j].position) < InitialFireTreeRadiuses[i])
+                if (Vector3.Distance(Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[InitialFireTreeIndexes[i]].position), Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[j].position)) < InitialFireTreeRadiuses[i])
                 {
                     _treesStates[j] = TreeState.FirePeak;
                     PutOnFire(j);
@@ -118,7 +118,7 @@ public class FireController : MonoBehaviour
                         {
                             if(_treesStates[j.Key]==TreeState.Ok)
                             {
-                                _treesFireResistance[j.Key] -= RadiationCoeficient * 0.00005f / _nearTrees[i][j.Key] / _nearTrees[i][j.Key];
+                                _treesFireResistance[j.Key] -= RadiationCoeficient * 10 / _nearTrees[i][j.Key] / _nearTrees[i][j.Key];
                             }
                         }
                     }
