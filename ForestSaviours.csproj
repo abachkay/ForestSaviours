@@ -90,13 +90,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EasyRoads3D Free\scripts\EasyRoads3DTerrainID.cs" />
-    <Compile Include="Assets\EasyRoads3D Free\scripts\MarkerScript.cs" />
-    <Compile Include="Assets\EasyRoads3D Free\scripts\RoadObjectScript.cs" />
-    <Compile Include="Assets\EasyRoads3D Free\scripts\SideObjectInit.cs" />
-    <Compile Include="Assets\EasyRoads3D Free\scripts\SurfaceScript.cs" />
-    <Compile Include="Assets\EasyRoads3D Free\scripts\sideObjectScript.cs" />
     <Compile Include="Assets\Scripts\CameraViewController.cs" />
+    <Compile Include="Assets\Scripts\CarManagementController.cs" />
+    <Compile Include="Assets\Scripts\CarMovementConroller.cs" />
     <Compile Include="Assets\Scripts\FireController.cs" />
     <Compile Include="Assets\Scripts\FireFighterController.cs" />
     <Compile Include="Assets\Scripts\FireFightersManagementController.cs" />

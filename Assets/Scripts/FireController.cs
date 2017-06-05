@@ -21,7 +21,7 @@ public class FireController : MonoBehaviour
 
     public float WindSpeed = 5;
     public int WindAngle = 0;
-    public float WindAngleAmplitude = 20f;
+    public float WindAngleAmplitude = 10f;
     public float WindSpeedAmplitude = 0.3f;
     public float WindAngleChangeDelay = 3f;
 
@@ -34,7 +34,7 @@ public class FireController : MonoBehaviour
     private TreeState[] _treesStates; 
     private Dictionary<int, float>[] _nearTrees;
     private float _pollingTimeStep = 0.1f;
-    private float _fireDistance = 40f;
+    private float _fireDistance = 20f;
     private float _pollingCounter = 0;
     private float _waterRadius = 20;
     private GameObject[] _spots;
@@ -44,7 +44,7 @@ public class FireController : MonoBehaviour
     {                
         if (WindArrow != null && WindSpeedText != null)
         {
-            WindSpeedText.text = WindSpeed.ToString() + "m/s";
+            WindSpeedText.text = string.Format("{0:0.0} m/s", WindSpeed);
             WindArrow.transform.rotation = Quaternion.Euler(new Vector3( 0,0,-WindAngle));            
         }
         var newTerrainData = Instantiate(TerrainObject.GetComponent<Terrain>().terrainData);
@@ -62,18 +62,18 @@ public class FireController : MonoBehaviour
 
             _treesHealth[i] = Random.Range(100, 120);
             _treesFireResistance[i] = Random.Range(100, 120);
-            _treesStates[i] = TreeState.Ok;            
-            for(int j=0;j<_trees.Length;j++)
+            _treesStates[i] = TreeState.Ok;
+            for (int j = 0; j < _trees.Length; j++)
             {
                 Vector2 position2d = new Vector2(_trees[i].position.z * TerrainObject.GetComponent<Terrain>().terrainData.size.z, _trees[i].position.x * TerrainObject.GetComponent<Terrain>().terrainData.size.x);
                 position2d.x += WindSpeed * Mathf.Cos(WindAngle * Mathf.PI / 180);
                 position2d.y += WindSpeed * Mathf.Sin(WindAngle * Mathf.PI / 180);
-                var distance = Vector3.Distance(new Vector3(position2d.y, _trees[i].position.y * TerrainObject.GetComponent<Terrain>().terrainData.size.y, position2d.x), Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size,_trees[j].position));
+                var distance = Vector3.Distance(new Vector3(position2d.y, _trees[i].position.y * TerrainObject.GetComponent<Terrain>().terrainData.size.y, position2d.x), Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[j].position));
                 if (i != j && distance < _fireDistance)
                 {
                     if (_nearTrees[i] == null)
                     {
-                        _nearTrees[i] = new Dictionary<int,float>();
+                        _nearTrees[i] = new Dictionary<int, float>();
                     }
                     _nearTrees[i].Add(j, distance);
                 }
@@ -83,12 +83,12 @@ public class FireController : MonoBehaviour
         {
             for (int j = 0; j < _trees.Length; j++)
             {
-                if (Vector3.Distance(Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[InitialFireTreeIndexes[i]].position), Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[j].position)) < InitialFireTreeRadiuses[i])
+                if (_treesStates[j] == TreeState.Ok && Vector3.Distance(Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[InitialFireTreeIndexes[i]].position), Vector3.Scale(TerrainObject.GetComponent<Terrain>().terrainData.size, _trees[j].position)) < InitialFireTreeRadiuses[i])
                 {
-                    _treesStates[j] = TreeState.FirePeak;
+                    _treesStates[j] = TreeState.FireStart;
                     PutOnFire(j);
                 }
-            }        
+            }
         }
     }
 		
@@ -174,11 +174,15 @@ public class FireController : MonoBehaviour
             // Check house on 6 level
             if (LevelIndex == 5)
             {
-                if(_fires.Length == 1238 && _fires[1237] != null)
+                if (_fires.Length == 1238 && _fires[1237] != null)
                 {
                     ResultMenu.SetActive(true);
-                    ResultText.text = "Game over";
+                    ResultText.text = "Game over. House is on fire.";
                     Time.timeScale = 0;
+                    foreach (var audio in Camera.main.GetComponents<AudioSource>())
+                    {
+                        audio.Pause();
+                    }
                 }
             }
         }
@@ -192,7 +196,7 @@ public class FireController : MonoBehaviour
             var speed =  WindSpeed + Random.Range(-WindSpeedAmplitude, WindSpeedAmplitude);
             if (WindArrow != null && WindSpeedText != null)
             {
-                WindSpeedText.text = string.Format("{0:0.0} м/с", speed);
+                WindSpeedText.text = string.Format("{0:0.0} m/s", speed);
                 WindArrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
             }
         }       
