@@ -129,7 +129,7 @@ public class FireFighterController : MonoBehaviour
     {
         get
         {
-            return (_waterAmount >= AmountsOfOneSpray * (TargetsOfMovementList.Count + 1));
+            return (_waterAmount >= AmountsOfOneSpray * (TargetsOfMovementList.Count + 1) || (_state == FireFighterState.Refilling && 1 >= AmountsOfOneSpray * (TargetsOfMovementList.Count + 1)));
         }
     }
 }
