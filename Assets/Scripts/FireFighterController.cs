@@ -59,7 +59,7 @@ public class FireFighterController : MonoBehaviour
                 {
                     _state = FireFighterState.Refilling;
                 }
-                if (_waterAmount >= AmountsOfOneSpray && TargetsOfMovementList.Count > 0 && _noDrop == false)
+                if (targetOfMovement.activeSelf && _waterAmount >= AmountsOfOneSpray && TargetsOfMovementList.Count > 0 && _noDrop == false)
                 {
                     // Spray water
                     var water = Instantiate(WaterSpray);
@@ -116,6 +116,12 @@ public class FireFighterController : MonoBehaviour
             {
                 _waterAmount = 1;
                 _state = FireFighterState.Idle;
+                if (TargetsOfMovementList.Count == 0)
+                {
+                    TargetsOfMovementList.Add(Instantiate(TargetOfMovementPrefab));
+                    TargetsOfMovementList.Last().transform.position = new Vector3(100,0,100);
+                    TargetsOfMovementList.Last().SetActive(false);
+                }
             }
             _waterAmount += RefilSpeed * 60 * Time.deltaTime;
             if (HealthBarTransform != null)

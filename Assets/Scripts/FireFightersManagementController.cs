@@ -83,7 +83,13 @@ public class FireFightersManagementController : MonoBehaviour
             Helicopters[SelectedHelicoterIndex].RefillingTarget.transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);
         }
         else if (Helicopters[SelectedHelicoterIndex].CanDrop)
-        {
+        {            
+            if (Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Count>0 && !Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.First().activeSelf)
+            {
+                var fakeTarget = Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.First();
+                Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Remove(fakeTarget);
+                Destroy(fakeTarget);
+            }
             Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Add(Instantiate(Helicopters[SelectedHelicoterIndex].TargetOfMovementPrefab));
             Helicopters[SelectedHelicoterIndex].TargetsOfMovementList.Last().transform.position = new Vector3(hit.point.x, hit.point.y + TargetOffset, hit.point.z);                       
         }
