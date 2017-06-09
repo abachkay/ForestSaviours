@@ -19,9 +19,9 @@ public class FireFightersManagementController : MonoBehaviour
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         // Input from windows.        
-#if UNITY_EDITOR
-        if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-            && !UnityEditor.EditorApplication.isRemoteConnected && 
+//#if UNITY_EDITOR
+        if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) && 
+            //!UnityEditor.EditorApplication.isRemoteConnected && 
             (UnityEngine.EventSystems.EventSystem.current == null || UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null))
         {
             if (Physics.Raycast(ray, out hit))
@@ -39,7 +39,7 @@ public class FireFightersManagementController : MonoBehaviour
                 }
             }
         }
-#endif        
+//#endif        
         // Input from mobile.
         if (Input.touchCount == 2 && (UnityEngine.EventSystems.EventSystem.current == null ||
             UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null))

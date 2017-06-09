@@ -12,9 +12,9 @@ public class CameraViewController : MonoBehaviour
     private void Update()
     {
         //For Windows.
-#if UNITY_EDITOR
-        if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer)
-            && !UnityEditor.EditorApplication.isRemoteConnected &&
+//#if UNITY_EDITOR
+        if ((Application.platform == RuntimePlatform.WindowsEditor || Application.platform == RuntimePlatform.WindowsPlayer) && 
+            //!UnityEditor.EditorApplication.isRemoteConnected &&
             (UnityEngine.EventSystems.EventSystem.current == null || UnityEngine.EventSystems.EventSystem.current != null && !UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
         {
             if (Input.GetMouseButton(0))
@@ -53,7 +53,7 @@ public class CameraViewController : MonoBehaviour
                 transform.position += translation;
             }
         }
-#endif
+//#endif
         //Input from mobile.
         if (Input.touchCount == 2 && (UnityEngine.EventSystems.EventSystem.current == null ||
             UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject == null))
