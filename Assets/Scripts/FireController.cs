@@ -44,7 +44,14 @@ public class FireController : MonoBehaviour
     {                
         if (WindArrow != null && WindSpeedText != null)
         {
-            WindSpeedText.text = string.Format("{0:0.0}m/s", WindSpeed);
+            if (PlayerPrefs.HasKey("lang") && PlayerPrefs.GetInt("lang") == 1)
+            {
+                WindSpeedText.text = string.Format("{0:0.0}м/c", WindSpeed);
+            }
+            else
+            {
+                WindSpeedText.text = string.Format("{0:0.0}m/s", WindSpeed);
+            }
             WindArrow.transform.rotation = Quaternion.Euler(new Vector3( 0,0,-WindAngle));            
         }
         var newTerrainData = Instantiate(TerrainObject.GetComponent<Terrain>().terrainData);
@@ -164,7 +171,14 @@ public class FireController : MonoBehaviour
                     audio.Pause();
                 }
                 ResultMenu.SetActive(true);
-                ResultText.text = "Result: " + ((int)(savedTreesCount / _trees.Length * 100)).ToString() + "%";
+                if (PlayerPrefs.HasKey("lang") && PlayerPrefs.GetInt("lang") == 1)
+                {                    
+                    ResultText.text = "Результат: " + ((int)(savedTreesCount / _trees.Length * 100)).ToString() + "%";
+                }
+                else
+                {
+                    ResultText.text = "Result: " + ((int)(savedTreesCount / _trees.Length * 100)).ToString() + "%";
+                }                
                 if (PlayerPrefs.GetInt(LevelIndex.ToString() + "%") < (int)(savedTreesCount / _trees.Length * 100))
                 {
                     PlayerPrefs.SetInt(LevelIndex.ToString() + "%", (int)(savedTreesCount / _trees.Length * 100));
@@ -177,7 +191,14 @@ public class FireController : MonoBehaviour
                 if (_fires.Length == 1238 && _fires[1237] != null)
                 {
                     ResultMenu.SetActive(true);
-                    ResultText.text = "Game over. House is on fire.";
+                    if (PlayerPrefs.HasKey("lang") && PlayerPrefs.GetInt("lang") == 1)
+                    {
+                        ResultText.text = "Поразка. Хатина загорілася.";
+                    }
+                    else
+                    {
+                        ResultText.text = "Game over. House is on fire.";
+                    }                    
                     Time.timeScale = 0;
                     foreach (var audio in Camera.main.GetComponents<AudioSource>())
                     {
@@ -196,7 +217,14 @@ public class FireController : MonoBehaviour
             var speed =  WindSpeed + Random.Range(-WindSpeedAmplitude, WindSpeedAmplitude);
             if (WindArrow != null && WindSpeedText != null)
             {
-                WindSpeedText.text = string.Format("{0:0.0}m/s", speed);
+                if (PlayerPrefs.HasKey("lang") && PlayerPrefs.GetInt("lang") == 1)
+                {
+                    WindSpeedText.text = string.Format("{0:0.0}м/c", speed);
+                }
+                else
+                {
+                    WindSpeedText.text = string.Format("{0:0.0}m/s", speed);
+                }                
                 WindArrow.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
             }
         }       

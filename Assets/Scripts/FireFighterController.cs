@@ -116,11 +116,11 @@ public class FireFighterController : MonoBehaviour
             {
                 _waterAmount = 1;
                 _state = FireFighterState.Idle;
-                if (TargetsOfMovementList.Count == 0)
+                if (TargetsOfMovementList.Count == 0 && Type != FireFighterType.AerialWaterSpraying)
                 {
                     TargetsOfMovementList.Add(Instantiate(TargetOfMovementPrefab));
-                    TargetsOfMovementList.Last().transform.position = new Vector3(100,0,100);
-                    TargetsOfMovementList.Last().SetActive(false);
+                    TargetsOfMovementList.Last().transform.position = new Vector3(100, 0, 100);
+                    TargetsOfMovementList.Last().SetActive(false);                                            
                 }
             }
             _waterAmount += RefilSpeed * 60 * Time.deltaTime;

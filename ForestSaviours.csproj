@@ -99,6 +99,7 @@
     <Compile Include="Assets\Scripts\HeliSelectController.cs" />
     <Compile Include="Assets\Scripts\HelicoptersController.cs" />
     <Compile Include="Assets\Scripts\LevelPercentageController.cs" />
+    <Compile Include="Assets\Scripts\LocalizationController.cs" />
     <Compile Include="Assets\Scripts\NoResourceTextController.cs" />
     <Compile Include="Assets\Scripts\UIEvents.cs" />
     <Compile Include="Assets\Scripts\VolumeController.cs" />
