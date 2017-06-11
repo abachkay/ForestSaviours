@@ -113,6 +113,11 @@ public class FireFighterController : MonoBehaviour
 
         if (_state == FireFighterState.Refilling)
         {
+            // Make soud
+            if (GetComponents<AudioSource>().Length>=2 && !GetComponents<AudioSource>()[1].isPlaying)
+            {
+                GetComponents<AudioSource>()[1].Play();
+            }
             // Make tube;
             if (Type == FireFighterType.AerialWaterSpraying && TubePrefab != null && _tube == null)
             {
@@ -129,10 +134,16 @@ public class FireFighterController : MonoBehaviour
                     TargetsOfMovementList.Last().transform.position = new Vector3(100, 0, 100);
                     TargetsOfMovementList.Last().SetActive(false);                                            
                 }
+                // Destroy tube
                 if (Type == FireFighterType.AerialWaterSpraying && _tube != null)
                 {
                     Destroy(_tube);
                     _tube = null;
+                }
+                // Stop sound
+                if (GetComponents<AudioSource>().Length >= 2 && GetComponents<AudioSource>()[1].isPlaying)
+                {
+                    GetComponents<AudioSource>()[1].Stop();
                 }
             }
             _waterAmount += RefilSpeed * 60 * Time.deltaTime;
