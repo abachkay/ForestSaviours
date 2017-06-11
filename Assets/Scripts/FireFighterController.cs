@@ -17,7 +17,9 @@ public class FireFighterController : MonoBehaviour
     public GameObject TargetOfMovementPrefab;
     public GameObject WaterSpray;
     public GameObject TargetForRefillPrefab;
-            
+    public GameObject TubePrefab;
+
+    private GameObject _tube;
     private float _waterAmount = 1;
     private FireFighterState _state = FireFighterState.Idle;
     private bool _noDrop = false;
@@ -27,7 +29,7 @@ public class FireFighterController : MonoBehaviour
     }
     private void Update()
     {
-        if (_state == FireFighterState.Idle /*|| _state == FireFighterState.Refilling*/ && TargetsOfMovementList.Count > 0 || RefillingTarget != null)
+        if (_state == FireFighterState.Idle && TargetsOfMovementList.Count > 0 || RefillingTarget != null)
         {
             _state = FireFighterState.Moving;
         }
@@ -111,6 +113,11 @@ public class FireFighterController : MonoBehaviour
 
         if (_state == FireFighterState.Refilling)
         {
+            // Make tube;
+            if (Type == FireFighterType.AerialWaterSpraying && TubePrefab != null && _tube == null)
+            {
+                _tube = Instantiate(TubePrefab,transform);                
+            }
             // Refils water           
             if (_waterAmount + RefilSpeed * 60 * Time.deltaTime >= 1)
             {
@@ -121,6 +128,11 @@ public class FireFighterController : MonoBehaviour
                     TargetsOfMovementList.Add(Instantiate(TargetOfMovementPrefab));
                     TargetsOfMovementList.Last().transform.position = new Vector3(100, 0, 100);
                     TargetsOfMovementList.Last().SetActive(false);                                            
+                }
+                if (Type == FireFighterType.AerialWaterSpraying && _tube != null)
+                {
+                    Destroy(_tube);
+                    _tube = null;
                 }
             }
             _waterAmount += RefilSpeed * 60 * Time.deltaTime;
