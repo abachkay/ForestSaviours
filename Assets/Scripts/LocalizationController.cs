@@ -96,19 +96,19 @@ public class LocalizationController : MonoBehaviour
             }
             if (MissionText != null)
             {
-                MissionText.text = "Місія: загасити вогонь і врятувати якомога більше дерев.\nПідсказка: гасити пожежу потрібно проти напрямку вітру.";
+                MissionText.text = "Місія: загасити вогонь і врятувати якомога більше дерев.\nПідказка: гасити пожежу потрібно проти напрямку вітру.";
             }
             if (WaterHelicopterDetailsText != null)
             {
-                WaterHelicopterDetailsText.text = "Швидкість: низька\nК-сть зкидувань: 4\nПоповнення: швидке, у водоймі, ручне";
+                WaterHelicopterDetailsText.text = "Швидкість: низька\nКількість зкидувань: 4\nПоповнення: швидке, у водоймі, ручне";
             }
             if (ChemicalsHelicopterDetailsText != null)
             {
-                ChemicalsHelicopterDetailsText.text = "Швидкість: висока\nК-сть зкидувань: 6\nПоповнення: повільне, на базі, автоматичне";
+                ChemicalsHelicopterDetailsText.text = "Швидкість: висока\nКількість зкидувань: 6\nПоповнення: повільне, на базі, автоматичне";
             }
             if (BombsHelicopterDetailsText != null)
             {
-                BombsHelicopterDetailsText.text = "Швидкість: середня\nК-сть зкидувань: 8\nПоповнення: повільне, на базі, автоматичне";
+                BombsHelicopterDetailsText.text = "Швидкість: середня\nКількість зкидувань: 8\nПоповнення: повільне, на базі, автоматичне";
             }
             if (Tip1Text != null)
             {
