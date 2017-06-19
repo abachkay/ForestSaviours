@@ -1,0 +1,144 @@
+fileFormatVersion: 2
+guid: eded103896a133649b34a4f8ab22cc81
+timeCreated: 1493223351
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 118_mesh_opaque_lightrear_lod_00
+    100002: 130_mesh_opaque_lightrearbase_lod_00
+    100004: 142_mesh_plastic
+    100006: 157_mesh_lights
+    100008: 16_mesh_opaque_propelrearslow_lod_00
+    100010: 172_mesh_paint
+    100012: 187_mesh_glass
+    100014: 197_mesh_chrome
+    100016: 31_mesh_opaque_propelrearfast_lod_00
+    100018: 43_mesh_opaque_propelfrontfast_lod_00
+    100020: 53_mesh_opaque_base_lod_00
+    100022: 82_mesh_opaque_lightfront_lod_00
+    100024: 94_mesh_opaque_lightfrontbase_lod_00
+    100026: //RootNode
+    400000: 118_mesh_opaque_lightrear_lod_00
+    400002: 130_mesh_opaque_lightrearbase_lod_00
+    400004: 142_mesh_plastic
+    400006: 157_mesh_lights
+    400008: 16_mesh_opaque_propelrearslow_lod_00
+    400010: 172_mesh_paint
+    400012: 187_mesh_glass
+    400014: 197_mesh_chrome
+    400016: 31_mesh_opaque_propelrearfast_lod_00
+    400018: 43_mesh_opaque_propelfrontfast_lod_00
+    400020: 53_mesh_opaque_base_lod_00
+    400022: 82_mesh_opaque_lightfront_lod_00
+    400024: 94_mesh_opaque_lightfrontbase_lod_00
+    400026: //RootNode
+    2300000: 118_mesh_opaque_lightrear_lod_00
+    2300002: 130_mesh_opaque_lightrearbase_lod_00
+    2300004: 142_mesh_plastic
+    2300006: 157_mesh_lights
+    2300008: 16_mesh_opaque_propelrearslow_lod_00
+    2300010: 172_mesh_paint
+    2300012: 187_mesh_glass
+    2300014: 197_mesh_chrome
+    2300016: 31_mesh_opaque_propelrearfast_lod_00
+    2300018: 43_mesh_opaque_propelfrontfast_lod_00
+    2300020: 53_mesh_opaque_base_lod_00
+    2300022: 82_mesh_opaque_lightfront_lod_00
+    2300024: 94_mesh_opaque_lightfrontbase_lod_00
+    3300000: 118_mesh_opaque_lightrear_lod_00
+    3300002: 130_mesh_opaque_lightrearbase_lod_00
+    3300004: 142_mesh_plastic
+    3300006: 157_mesh_lights
+    3300008: 16_mesh_opaque_propelrearslow_lod_00
+    3300010: 172_mesh_paint
+    3300012: 187_mesh_glass
+    3300014: 197_mesh_chrome
+    3300016: 31_mesh_opaque_propelrearfast_lod_00
+    3300018: 43_mesh_opaque_propelfrontfast_lod_00
+    3300020: 53_mesh_opaque_base_lod_00
+    3300022: 82_mesh_opaque_lightfront_lod_00
+    3300024: 94_mesh_opaque_lightfrontbase_lod_00
+    4300000: 118_mesh_opaque_lightrear_lod_00
+    4300002: 130_mesh_opaque_lightrearbase_lod_00
+    4300004: 142_mesh_plastic
+    4300006: 157_mesh_lights
+    4300008: 16_mesh_opaque_propelrearslow_lod_00
+    4300010: 172_mesh_paint
+    4300012: 187_mesh_glass
+    4300014: 197_mesh_chrome
+    4300016: 31_mesh_opaque_propelrearfast_lod_00
+    4300018: 43_mesh_opaque_propelfrontfast_lod_00
+    4300020: 53_mesh_opaque_base_lod_00
+    4300022: 82_mesh_opaque_lightfront_lod_00
+    4300024: 94_mesh_opaque_lightfrontbase_lod_00
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

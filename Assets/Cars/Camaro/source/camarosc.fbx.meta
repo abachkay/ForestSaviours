@@ -1,0 +1,240 @@
+fileFormatVersion: 2
+guid: c77b875f46b45a348a8e723ccaaf3e14
+timeCreated: 1496576994
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: __SunNode__
+    100002: blglo_ds.gmt
+    100004: blglo_ps.gmt
+    100006: cam_body_a.gmt
+    100008: cam_driver_a.gmt
+    100010: cam_helmet_a.gmt
+    100012: cam_lf_cal.gmt
+    100014: cam_lf_wh_a.gmt
+    100016: cam_lr_cal.gmt
+    100018: cam_lr_wh_a.gmt
+    100020: cam_pace_lights_a.gmt
+    100022: cam_parts_a.gmt
+    100024: cam_rf_cal.gmt
+    100026: cam_rf_wh_a.gmt
+    100028: cam_rf_wh_a.gmt001
+    100030: cam_rr_cal.gmt
+    100032: cam_rr_wh_a.gmt
+    100034: cam_shad.gmt
+    100036: //RootNode
+    100038: camss_body_glo_a.gmt
+    100040: camss_body_met_a.gmt
+    100042: camss_body_scr_a.gmt
+    100044: camss_col.gmt
+    100046: camss_driver_a.gmt
+    100048: camss_ext_stw.gmt
+    100050: camss_glo_shad.gmt
+    100052: camss_helmet_a.gmt
+    100054: camss_int_dash.gmt
+    100056: camss_int_gauges.gmt
+    100058: camss_int_glass.gmt
+    100060: camss_int_hood_glo.gmt
+    100062: camss_int_hood_met.gmt
+    100064: camss_int_hood_scr.gmt
+    100066: camss_int_mirrors.gmt
+    100068: camss_int_parts.gmt
+    100070: camss_int_rear.gmt
+    100072: camss_int_seats_f.gmt
+    100074: camss_int_stw.gmt
+    100076: camss_int_stw_lo.gmt
+    100078: camss_lf_cal.gmt
+    100080: camss_lf_wh_chr_a.gmt
+    100082: camss_lf_wh_gun_a.gmt
+    100084: camss_lr_cal.gmt
+    100086: camss_lr_wh_chr_a.gmt
+    100088: camss_lr_wh_gun_a.gmt
+    100090: camss_met_shad.gmt
+    100092: camss_parts_a.gmt
+    100094: camss_plates.gmt
+    100096: camss_rf_cal.gmt
+    100098: camss_rf_wh_chr_a.gmt
+    100100: camss_rf_wh_gun_a.gmt
+    100102: camss_rr_cal.gmt
+    100104: camss_rr_wh_chr_a.gmt
+    100106: camss_rr_wh_gun_a.gmt
+    100108: camss_scr_shad.gmt
+    100110: hlglo_ds.gmt
+    100112: hlglo_ps.gmt
+    100114: warnlights.gmt
+    400000: __SunNode__
+    400002: blglo_ds.gmt
+    400004: blglo_ps.gmt
+    400006: cam_body_a.gmt
+    400008: cam_driver_a.gmt
+    400010: cam_helmet_a.gmt
+    400012: cam_lf_cal.gmt
+    400014: cam_lf_wh_a.gmt
+    400016: cam_lr_cal.gmt
+    400018: cam_lr_wh_a.gmt
+    400020: cam_pace_lights_a.gmt
+    400022: cam_parts_a.gmt
+    400024: cam_rf_cal.gmt
+    400026: cam_rf_wh_a.gmt
+    400028: cam_rf_wh_a.gmt001
+    400030: cam_rr_cal.gmt
+    400032: cam_rr_wh_a.gmt
+    400034: cam_shad.gmt
+    400036: //RootNode
+    400038: camss_body_glo_a.gmt
+    400040: camss_body_met_a.gmt
+    400042: camss_body_scr_a.gmt
+    400044: camss_col.gmt
+    400046: camss_driver_a.gmt
+    400048: camss_ext_stw.gmt
+    400050: camss_glo_shad.gmt
+    400052: camss_helmet_a.gmt
+    400054: camss_int_dash.gmt
+    400056: camss_int_gauges.gmt
+    400058: camss_int_glass.gmt
+    400060: camss_int_hood_glo.gmt
+    400062: camss_int_hood_met.gmt
+    400064: camss_int_hood_scr.gmt
+    400066: camss_int_mirrors.gmt
+    400068: camss_int_parts.gmt
+    400070: camss_int_rear.gmt
+    400072: camss_int_seats_f.gmt
+    400074: camss_int_stw.gmt
+    400076: camss_int_stw_lo.gmt
+    400078: camss_lf_cal.gmt
+    400080: camss_lf_wh_chr_a.gmt
+    400082: camss_lf_wh_gun_a.gmt
+    400084: camss_lr_cal.gmt
+    400086: camss_lr_wh_chr_a.gmt
+    400088: camss_lr_wh_gun_a.gmt
+    400090: camss_met_shad.gmt
+    400092: camss_parts_a.gmt
+    400094: camss_plates.gmt
+    400096: camss_rf_cal.gmt
+    400098: camss_rf_wh_chr_a.gmt
+    400100: camss_rf_wh_gun_a.gmt
+    400102: camss_rr_cal.gmt
+    400104: camss_rr_wh_chr_a.gmt
+    400106: camss_rr_wh_gun_a.gmt
+    400108: camss_scr_shad.gmt
+    400110: hlglo_ds.gmt
+    400112: hlglo_ps.gmt
+    400114: warnlights.gmt
+    2300000: blglo_ds.gmt
+    2300002: blglo_ps.gmt
+    2300004: cam_body_a.gmt
+    2300006: cam_driver_a.gmt
+    2300008: cam_helmet_a.gmt
+    2300010: cam_lf_cal.gmt
+    2300012: cam_lf_wh_a.gmt
+    2300014: cam_lr_cal.gmt
+    2300016: cam_lr_wh_a.gmt
+    2300018: cam_pace_lights_a.gmt
+    2300020: cam_parts_a.gmt
+    2300022: cam_rf_cal.gmt
+    2300024: cam_rf_wh_a.gmt
+    2300026: cam_rf_wh_a.gmt001
+    2300028: cam_rr_cal.gmt
+    3300000: blglo_ds.gmt
+    3300002: blglo_ps.gmt
+    3300004: cam_body_a.gmt
+    3300006: cam_driver_a.gmt
+    3300008: cam_helmet_a.gmt
+    3300010: cam_lf_cal.gmt
+    3300012: cam_lf_wh_a.gmt
+    3300014: cam_lr_cal.gmt
+    3300016: cam_lr_wh_a.gmt
+    3300018: cam_pace_lights_a.gmt
+    3300020: cam_parts_a.gmt
+    3300022: cam_rf_cal.gmt
+    3300024: cam_rf_wh_a.gmt
+    3300026: cam_rf_wh_a.gmt001
+    3300028: cam_rr_cal.gmt
+    4300000: blglo_ds.gmt
+    4300002: blglo_ps.gmt
+    4300004: cam_body_a.gmt
+    4300006: cam_driver_a.gmt
+    4300008: cam_helmet_a.gmt
+    4300010: cam_lf_cal.gmt
+    4300012: cam_lf_wh_a.gmt
+    4300014: cam_lr_cal.gmt
+    4300016: cam_lr_wh_a.gmt
+    4300018: cam_pace_lights_a.gmt
+    4300020: cam_parts_a.gmt
+    4300022: cam_rf_cal.gmt
+    4300024: cam_rf_wh_a.gmt
+    4300026: cam_rr_cal.gmt
+    4300028: cam_rf_wh_a.gmt001
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 4e4d18f6d535e964da3a4493fb9b14d8
+timeCreated: 1495900843
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - HealthBarTransform: {instanceID: 0}
+  - RefillingTarget: {instanceID: 0}
+  - TargetOfMovementPrefab: {instanceID: 0}
+  - WaterSpray: {instanceID: 0}
+  - TargetForRefillPrefab: {fileID: 1699413043141992, guid: 533f5c1720c672d4b9b60e30d4ff2052,
+      type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

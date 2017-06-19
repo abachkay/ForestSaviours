@@ -1,0 +1,177 @@
+fileFormatVersion: 2
+guid: e45a581ee1256814ca7f0bee81e206dc
+timeCreated: 1493223350
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: 107_lightbeam_mesh_rear
+    100002: 118_mesh_opaque_lightrear_lod_00
+    100004: 129_mesh_opaque_lightrearbase_lod_00
+    100006: 140_mesh_opaque_body_lod_00
+    100008: 15_mesh_opaque_propelrearslow_lod_00
+    100010: 28_mesh_opaque_propelrearfast_lod_00
+    100012: 38_mesh_opaque_propelfrontfast_lod_00
+    100014: 47_mesh_opaque_propelfrontslow_lod_00
+    100016: 56_mesh_opaque_base_lod_00
+    100018: 71_lightbeam_mesh_front
+    100020: 86_mesh_opaque_lightfront_lod_00
+    100022: 97_mesh_opaque_lightfrontbase_lod_00
+    100024: helicopter 1
+    100026: //RootNode
+    100028: J_Helicopter
+    100030: J_Light_Front
+    100032: J_Light_Front_Base
+    100034: J_Light_Front_Beam
+    100036: J_Light_Rear
+    100038: J_Light_Rear_Base
+    100040: J_Light_Rear_Beam
+    100042: J_Propeller_Front
+    100044: J_Propeller_Rear
+    100046: lod_00
+    100048: lod_00 1
+    100050: lod_00 2
+    100052: lod_00 3
+    100054: lod_00 4
+    100056: lod_00 5
+    100058: lod_00 6
+    100060: lod_00 7
+    100062: lod_00 8
+    400000: 107_lightbeam_mesh_rear
+    400002: 118_mesh_opaque_lightrear_lod_00
+    400004: 129_mesh_opaque_lightrearbase_lod_00
+    400006: 140_mesh_opaque_body_lod_00
+    400008: 15_mesh_opaque_propelrearslow_lod_00
+    400010: 28_mesh_opaque_propelrearfast_lod_00
+    400012: 38_mesh_opaque_propelfrontfast_lod_00
+    400014: 47_mesh_opaque_propelfrontslow_lod_00
+    400016: 56_mesh_opaque_base_lod_00
+    400018: 71_lightbeam_mesh_front
+    400020: 86_mesh_opaque_lightfront_lod_00
+    400022: 97_mesh_opaque_lightfrontbase_lod_00
+    400024: helicopter 1
+    400026: //RootNode
+    400028: J_Helicopter
+    400030: J_Light_Front
+    400032: J_Light_Front_Base
+    400034: J_Light_Front_Beam
+    400036: J_Light_Rear
+    400038: J_Light_Rear_Base
+    400040: J_Light_Rear_Beam
+    400042: J_Propeller_Front
+    400044: J_Propeller_Rear
+    400046: lod_00
+    400048: lod_00 1
+    400050: lod_00 2
+    400052: lod_00 3
+    400054: lod_00 4
+    400056: lod_00 5
+    400058: lod_00 6
+    400060: lod_00 7
+    400062: lod_00 8
+    2300000: 107_lightbeam_mesh_rear
+    2300002: 118_mesh_opaque_lightrear_lod_00
+    2300004: 129_mesh_opaque_lightrearbase_lod_00
+    2300006: 140_mesh_opaque_body_lod_00
+    2300008: 15_mesh_opaque_propelrearslow_lod_00
+    2300010: 28_mesh_opaque_propelrearfast_lod_00
+    2300012: 38_mesh_opaque_propelfrontfast_lod_00
+    2300014: 47_mesh_opaque_propelfrontslow_lod_00
+    2300016: 56_mesh_opaque_base_lod_00
+    2300018: 71_lightbeam_mesh_front
+    2300020: 86_mesh_opaque_lightfront_lod_00
+    2300022: 97_mesh_opaque_lightfrontbase_lod_00
+    3300000: 107_lightbeam_mesh_rear
+    3300002: 118_mesh_opaque_lightrear_lod_00
+    3300004: 129_mesh_opaque_lightrearbase_lod_00
+    3300006: 140_mesh_opaque_body_lod_00
+    3300008: 15_mesh_opaque_propelrearslow_lod_00
+    3300010: 28_mesh_opaque_propelrearfast_lod_00
+    3300012: 38_mesh_opaque_propelfrontfast_lod_00
+    3300014: 47_mesh_opaque_propelfrontslow_lod_00
+    3300016: 56_mesh_opaque_base_lod_00
+    3300018: 71_lightbeam_mesh_front
+    3300020: 86_mesh_opaque_lightfront_lod_00
+    3300022: 97_mesh_opaque_lightfrontbase_lod_00
+    4300000: 15_mesh_opaque_propelrearslow_lod_00
+    4300002: 28_mesh_opaque_propelrearfast_lod_00
+    4300004: 38_mesh_opaque_propelfrontfast_lod_00
+    4300006: 47_mesh_opaque_propelfrontslow_lod_00
+    4300008: 56_mesh_opaque_base_lod_00
+    4300010: 71_lightbeam_mesh_front
+    4300012: 86_mesh_opaque_lightfront_lod_00
+    4300014: 97_mesh_opaque_lightfrontbase_lod_00
+    4300016: 107_lightbeam_mesh_rear
+    4300018: 118_mesh_opaque_lightrear_lod_00
+    4300020: 129_mesh_opaque_lightrearbase_lod_00
+    4300022: 140_mesh_opaque_body_lod_00
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
