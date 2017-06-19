@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2017
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForestSaviours.Plugins", "ForestSaviours.Plugins.csproj", "{82AA77D4-3E31-BA2A-7690-C5337989925C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForestSaviours", "ForestSaviours.csproj", "{DBD62C23-AFC0-2714-154B-F906590DF4E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ForestSaviours.Editor.Plugins", "ForestSaviours.Editor.Plugins.csproj", "{8D2C93FA-A5E1-42A4-CAA3-07041D58351C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{82AA77D4-3E31-BA2A-7690-C5337989925C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82AA77D4-3E31-BA2A-7690-C5337989925C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82AA77D4-3E31-BA2A-7690-C5337989925C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82AA77D4-3E31-BA2A-7690-C5337989925C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBD62C23-AFC0-2714-154B-F906590DF4E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBD62C23-AFC0-2714-154B-F906590DF4E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBD62C23-AFC0-2714-154B-F906590DF4E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBD62C23-AFC0-2714-154B-F906590DF4E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8D2C93FA-A5E1-42A4-CAA3-07041D58351C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8D2C93FA-A5E1-42A4-CAA3-07041D58351C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8D2C93FA-A5E1-42A4-CAA3-07041D58351C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8D2C93FA-A5E1-42A4-CAA3-07041D58351C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
